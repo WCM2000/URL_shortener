@@ -1,0 +1,72 @@
+/* General page background and font settings */
+body {
+    background-color: #f8f9fa;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Custom card styling */
+.custom-card {
+    padding: 30px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Title styling for the main header */
+.card-title {
+    font-size: 2.5rem;
+    color: #007bff;
+}
+
+/* Short URL code styling */
+h2 {
+    font-size: 2rem;
+    color: #28a745;
+}
+
+/* Button customizations */
+.custom-btn {
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.custom-btn i {
+    margin-right: 8px;
+}
+
+/* Primary button hover effect */
+.btn-primary:hover {
+    background-color: #0056b3;
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.5);
+}
+
+/* Secondary button hover effect */
+.btn-outline-secondary:hover {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+.alert {
+    position: relative;
+    margin-top: 20px;
+}
+
+/* Responsive design - ensures the card stays centered on smaller screens */
+@media (max-width: 768px) {
+    .custom-card {
+        padding: 20px;
+    }
+
+    .card-title {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    .custom-btn {
+        font-size: 1rem;
+        padding: 10px 15px;
+    }
+}

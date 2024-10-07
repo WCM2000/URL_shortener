@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block title %}URL Shortener{% endblock %}
+
+{% block main %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-5 col-md-6 mb-4">
+      <!-- Card for Website URL Shortener -->
+      <div class="card border-0 shadow-lg">
+        <div class="card-header bg-info text-white text-center py-4">
+          <h4 class="font-weight-bold">Website Shortener</h4>
+        </div>
+        <div class="card-body p-4">
+          <form action="{{ url_for('urlshort.your_url') }}" method="post">
+            <div class="form-group">
+              <label for="code">Short Name</label>
+              <input type="text" class="form-control" name="code" id="code" placeholder="Enter a short name" required>
+            </div>
+            <div class="form-group">
+              <label for="url">Website URL</label>
+              <input type="url" class="form-control" name="url" id="url" placeholder="Enter the website URL" required>
+            </div>
+            <button class="btn btn-info btn-lg btn-block font-weight-bold" type="submit">Shorten URL</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-5 col-md-6 mb-4">
+      <!-- Card for File Shortener -->
+      <div class="card border-0 shadow-lg">
+        <div class="card-header bg-success text-white text-center py-4">
+          <h4 class="font-weight-bold">File Shortener</h4>
+        </div>
+        <div class="card-body p-4">
+          <form action="{{ url_for('urlshort.your_url') }}" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+              <label for="code">Short Name</label>
+              <input type="text" class="form-control" name="code" id="code" placeholder="Enter a short name" required>
+            </div>
+            <div class="form-group">
+              <label for="file">File Upload</label>
+              <input type="file" class="form-control-file" name="file" id="file" required>
+            </div>
+            <button class="btn btn-success btn-lg btn-block font-weight-bold" type="submit">Shorten File URL</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% if codes %}
+  <div class="row mt-5">
+    <div class="col-lg-8 mx-auto">
+      <h3 class="text-center mb-4">Your Created Codes</h3>
+      <ul class="list-group list-group-flush">
+        {% for code in codes %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <span class="text-muted">{{ code }}</span>
+          <a href="{{ url_for('urlshort.redirect_to_url', code=code) }}" class="btn btn-outline-primary btn-sm">Go to
+            URL</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

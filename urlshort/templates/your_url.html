@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}URL for '{{ code }}'{% endblock %}
+
+{% block main %}
+<div class="container text-center mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <!-- Stylish Card for URL Display -->
+            <div class="card custom-card shadow-sm border-0">
+                <div class="card-body">
+                    <!-- Header with Icon and URL Code -->
+                    <h1 class="card-title display-4 font-weight-bold text-primary mb-4">
+                        <i class="fas fa-link"></i> Your URL
+                    </h1>
+
+                    <!-- Display the Shortened URL Code -->
+                    <h2 class="text-success font-weight-bold mb-4">{{ code }}</h2>
+
+                    <!-- Button to Copy URL or Navigate -->
+                    <div class="d-grid gap-2">
+                        <a href="{{ url_for('urlshort.redirect_to_url', code=code) }}"
+                            class="btn btn-lg btn-primary custom-btn">
+                            <i class="fas fa-external-link-alt"></i> Visit Shortened URL
+                        </a>
+                        <button class="btn btn-lg btn-outline-secondary custom-btn"
+                            onclick="copyToClipboard('{{ url_for('urlshort.redirect_to_url', code=code, _external=True) }}')">
+                            <i class="fas fa-copy"></i> Copy URL to Clipboard
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Function to copy the URL to clipboard
+    function copyToClipboard(url) {
+        const el = document.createElement('textarea');
+        el.value = url;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+        alert('URL copied to clipboard!');
+    }
+</script>
+{% endblock %}
